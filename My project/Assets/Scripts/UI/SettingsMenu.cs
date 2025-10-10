@@ -26,6 +26,7 @@ public class SettingsMenu : MonoBehaviour
     {
         audioMixer.SetFloat("MusicVolumeMixer", 0f);
         audioMixer.SetFloat("SFXVolumeMixer", 0f);
+        musicSlider.value = 1f; SFXSlider.value = 1f;
     }
 
     private void Update()
