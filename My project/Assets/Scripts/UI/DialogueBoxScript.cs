@@ -13,7 +13,7 @@ public class DialogueBoxScript : MonoBehaviour
     public static bool isPrinting = false;
     private int index = 0;
     string[] dialogue;
-    //string[] test = { "1231231231231231", "asdasdasdasd", "asdas][][]sadfs", "af43t45wwefsadf" };
+    string[] test = { "1231231231231231", "asdasdasdasd", "asdas][][]sadfs", "af43t45wwefsadf" };
 
     private void Start()
     {
@@ -33,6 +33,7 @@ public class DialogueBoxScript : MonoBehaviour
             }
             else NextLine(dialogue);
         }
+        //if (Input.GetKeyDown(KeyCode.N)) StartDialogue(test);
     }
 
     public void StartDialogue(string[] lines)
