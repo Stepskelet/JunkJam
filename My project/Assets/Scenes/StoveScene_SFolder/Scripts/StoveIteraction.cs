@@ -7,7 +7,11 @@ public class StoveIteraction : MonoBehaviour
     public ParticleSystem part3;
     public ParticleSystem part4;
 
-    public PancakeTimer pancakeTimer; 
+    public PancakeTimer pancakeTimer;
+
+    public float soundStartTime;
+
+    private AudioSource switchSound;
 
     private int offCounter = 0;
 
@@ -16,6 +20,7 @@ public class StoveIteraction : MonoBehaviour
     void Start()
     {
         playerMoveToTarget = GetComponent<PlayerMoveToTarget>();
+        switchSound = GetComponent<AudioSource>();
     }
 
     void OnEnable()
@@ -45,6 +50,9 @@ public class StoveIteraction : MonoBehaviour
                     {
                         emiss.enabled = false;
                         offCounter++;
+                        switchSound.Stop();
+                        switchSound.time = soundStartTime;
+                        switchSound.Play();
                     }
                 }
 
@@ -55,6 +63,9 @@ public class StoveIteraction : MonoBehaviour
                     {
                         emiss.enabled = false;
                         offCounter++;
+                        switchSound.Stop();
+                        switchSound.time = soundStartTime;
+                        switchSound.Play();
                     }
                 }
 
@@ -65,6 +76,9 @@ public class StoveIteraction : MonoBehaviour
                     {
                         emiss.enabled = false;
                         offCounter++;
+                        switchSound.Stop();
+                        switchSound.time = soundStartTime;
+                        switchSound.Play();
                     }
                 }
 
@@ -75,6 +89,9 @@ public class StoveIteraction : MonoBehaviour
                     {
                         emiss.enabled = false;
                         offCounter++;
+                        switchSound.Stop();
+                        switchSound.time = soundStartTime;
+                        switchSound.Play();
                     }
                 }
             }
