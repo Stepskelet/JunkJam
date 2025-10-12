@@ -19,15 +19,43 @@ public class PancakeTimer : MonoBehaviour
 
     public GameObject pancake;
 
+    [Header("Звуки")]
+
+    public AudioSource stoveAudio;
+    public AudioSource suffAudio;
+
+    public AudioSource completeSound;
+
+    [Header("Значения для звука конфорок")]
+
+    public float soundStart;
+
+    public float soundEnd;
+    
+
     private bool isFading = false;
     private float fadeAlpha = 0f;
 
     private int stovesOff = 0;
 
+
     void Start()
     {
         pancake.SetActive(false);
         StartCoroutine(WaitAndFade());
+        stoveAudio.time = soundStart;
+        stoveAudio.Play();
+    }
+
+    void Update()
+    {
+        if (stoveAudio.isPlaying)
+        {
+            if (stoveAudio.time >= soundEnd)
+            {
+                stoveAudio.time = soundStart;
+            }
+        }
     }
 
     IEnumerator WaitAndFade()
@@ -37,6 +65,8 @@ public class PancakeTimer : MonoBehaviour
         if (stovesOff != 4)
         {
             isFading = true;
+            stoveAudio.Stop();
+            suffAudio.Play();
             while (fadeAlpha < 1f)
             {
                 fadeAlpha += Time.deltaTime * fadeSpeed;
@@ -52,9 +82,11 @@ public class PancakeTimer : MonoBehaviour
     {
         stovesOff++;
 
-        if (stovesOff == 4)
+        if (stovesOff == 4 && !isFading)
         {
             pancake.SetActive(true);
+            stoveAudio.Stop();
+            completeSound.Play();
             this.enabled = false;
         }
     }
