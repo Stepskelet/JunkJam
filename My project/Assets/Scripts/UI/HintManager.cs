@@ -10,7 +10,7 @@ public class HintManager : MonoBehaviour
         hintBox.SetActive(false);
     }
 
-    public void ShowHint(char key)
+    public void ShowHint(string key)
     {
         hintBox.SetActive(true);
         hintKey.text = key;
