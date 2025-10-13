@@ -6,7 +6,6 @@ public class MainMenu : MonoBehaviour
     public GameObject mainMenu;
     public GameObject settingsMenu;
     public GameObject credits;
-    [SerializeField] private GameObject FPSController;
     public static bool mainMenuActive = false;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -15,6 +14,12 @@ public class MainMenu : MonoBehaviour
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        if(SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            mainMenu.SetActive(true);
+            mainMenuActive = true;
+        }
 
         mainMenu.SetActive(true);
         mainMenuActive = true;
@@ -28,10 +33,6 @@ public class MainMenu : MonoBehaviour
         if (credits.activeSelf && Input.GetKeyDown(KeyCode.Escape))
         {
             CloseCredits();
-        }
-        if (mainMenuActive)
-        {
-            FPSController.SetActive(false);
         }
     }
 
