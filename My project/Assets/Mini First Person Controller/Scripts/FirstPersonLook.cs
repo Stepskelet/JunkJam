@@ -7,7 +7,11 @@ public class FirstPersonLook : MonoBehaviour
     public float sensitivity = 2;
     public float smoothing = 1.5f;
 
-    Vector2 velocity = new Vector2(180, 0);
+    public float startX;
+
+    public float startY;
+
+    Vector2 velocity;
     Vector2 frameVelocity;
 
 
@@ -21,6 +25,7 @@ public class FirstPersonLook : MonoBehaviour
     {
         // Lock the mouse cursor to the game screen.
         Cursor.lockState = CursorLockMode.Locked;
+        velocity = new Vector2(startX, startY);
     }
 
     void Update()
