@@ -14438,7 +14438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AudioManagerScript
   music: {fileID: 503997072}
   SFX: {fileID: 1287410172}
-  OST: {fileID: 0}
+  OST: {fileID: 8300000, guid: 2b306d9e1d5d38d488d0a6cb8d6ab356, type: 3}
   footsteps: {fileID: 0}
   blinPickup: {fileID: 0}
   buttonSFX: {fileID: 0}
