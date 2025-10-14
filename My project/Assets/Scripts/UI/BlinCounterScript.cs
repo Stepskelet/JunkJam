@@ -6,11 +6,12 @@ public class BlinCounterScript : MonoBehaviour
     [SerializeField] private TMP_Text counterText;
     [SerializeField] public GameObject counterObject;
 
-    private int blinCount = 0;
+    private static int blinCount = 0;
 
     private void Start()
     {
         counterObject.SetActive(true);
+        counterText.text = blinCount.ToString();
     }
 
     private void FixedUpdate()

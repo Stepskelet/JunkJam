@@ -3,37 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags:
-  - Stove1
-  - StoveFull1
-  - Stove2
-  - Stove3
-  - Stove4
-  - StoveFull2
-  - StoveFull3
-  - StoveFull4
-  - GameButton0
-  - GameButton1
-  - GameButton2
-  - GameButton3
-  - GameButton4
-  - GameButton5
-  - GameButton6
-  - GameButton7
-  - GameButton8
-  - GameButton9
-  - GameButton10
-  - GameButton11
-  - GameButton12
-  - GameButton13
-  - GameButton14
-  - GameButton15
-  - GameButton16
+  tags: []
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - GameLayer
+  - 
   - Water
   - UI
   - 
