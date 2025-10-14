@@ -3431,7 +3431,6 @@ MonoBehaviour:
   mainMenu: {fileID: 1420763263}
   settingsMenu: {fileID: 1114353917}
   credits: {fileID: 336499672}
-  FPSController: {fileID: 0}
 --- !u!114 &274018426
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14578,6 +14577,11 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e41183600a5150344bd794aea74cbe88, type: 3}
+--- !u!20 &1190964377 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 20437472682476688, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+  m_PrefabInstance: {fileID: 720575633}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1210694788
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25624,9 +25628,11 @@ GameObject:
   - component: {fileID: 3387489875810813910}
   - component: {fileID: 747316485706898859}
   - component: {fileID: 3891865553824107082}
+  - component: {fileID: 3891865553824107083}
+  - component: {fileID: 3891865553824107084}
   m_Layer: 0
   m_Name: pancake
-  m_TagString: Untagged
+  m_TagString: pancake
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -25765,6 +25771,44 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!64 &3891865553824107083
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129230432214142842}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 4141878788222339541, guid: 0d2c4747dc2b3724a92f1c9375c5ad26, type: 3}
+--- !u!114 &3891865553824107084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129230432214142842}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e38cfc8d13cfeb46a704fd78158795d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::BlinLevelTransfer
+  blinCollider: {fileID: 3891865553824107083}
+  playerCamera: {fileID: 1190964377}
+  hint: {fileID: 252658782}
+  blinCounter: {fileID: 252658783}
 --- !u!33 &4558899477063659897
 MeshFilter:
   m_ObjectHideFlags: 0

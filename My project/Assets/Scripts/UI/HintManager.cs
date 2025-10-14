@@ -1,16 +1,17 @@
 using UnityEngine;
 using TMPro;
 
-public class HintManager : MonoBehaviour
+public class HintManager : MonoBehaviour 
 {
     [SerializeField] private TMP_Text hintKey;
     [SerializeField] public GameObject hintBox;
+
     void Start()
     {
         hintBox.SetActive(false);
     }
 
-    public void ShowHint(string key)
+    public  void ShowHint(string key)
     {
         hintBox.SetActive(true);
         hintKey.text = key;

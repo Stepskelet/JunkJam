@@ -7,7 +7,7 @@ using System.Collections;
 public class PancakeTimer : MonoBehaviour
 {
     [Header("Время ожидания (секунды)")]
-    public float waitTime = 10f;
+    public float waitTime = 15f;
 
     [Header("Image для затемнения экрана")]
     public Image fadeImage;
