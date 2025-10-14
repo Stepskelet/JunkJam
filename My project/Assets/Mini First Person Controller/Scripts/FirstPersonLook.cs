@@ -14,6 +14,7 @@ public class FirstPersonLook : MonoBehaviour
     Vector2 velocity;
     Vector2 frameVelocity;
 
+    bool mouseMoved = false;
 
     void Reset()
     {
@@ -23,12 +24,38 @@ public class FirstPersonLook : MonoBehaviour
 
     void Start()
     {
+<<<<<<< HEAD
 
+=======
+        Cursor.lockState = CursorLockMode.Locked;
+>>>>>>> main
         velocity = new Vector2(startX, startY);
+
+        // Устанавливаем стартовый угол
+        transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
+        character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
     }
 
     void Update()
     {
+        float mouseX = Input.GetAxisRaw("Mouse X");
+        float mouseY = Input.GetAxisRaw("Mouse Y");
+
+        if (!mouseMoved)
+        {
+            if (Mathf.Abs(mouseX) > 0.01f || Mathf.Abs(mouseY) > 0.01f)
+            {
+                mouseMoved = true;
+            }
+            else
+            {
+                transform.localRotation = Quaternion.AngleAxis(-velocity.y, Vector3.right);
+                character.localRotation = Quaternion.AngleAxis(velocity.x, Vector3.up);
+                return;
+            }
+        }
+
+
         // Get smooth velocity.
         if(!MainMenu.mainMenuActive&&!PauseMenu.isPaused)
         {

@@ -32197,8 +32197,12 @@ PrefabInstance:
       value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 114657890492222300, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
+      propertyPath: startX
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 114657890492222300, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: startY
-      value: -43
+      value: -12
       objectReference: {fileID: 0}
     - target: {fileID: 114762042097486276, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: m_Enabled
@@ -105031,7 +105035,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282b687e5b88cb44ea1d368d8eae4442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeoutRestart
-  waitTime: 10
+  waitTime: 600
   fadeImage: {fileID: 1504810446}
   fadeSpeed: 0.5
   pancake: {fileID: 1495865442}
