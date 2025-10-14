@@ -24,11 +24,7 @@ public class FirstPersonLook : MonoBehaviour
 
     void Start()
     {
-<<<<<<< HEAD
 
-=======
-        Cursor.lockState = CursorLockMode.Locked;
->>>>>>> main
         velocity = new Vector2(startX, startY);
 
         // Устанавливаем стартовый угол

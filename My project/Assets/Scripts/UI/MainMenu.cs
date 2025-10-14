@@ -12,17 +12,23 @@ public class MainMenu : MonoBehaviour
 
     void Start()
     {
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        
 
         if(SceneManager.GetActiveScene().buildIndex == 0)
         {
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
             mainMenu.SetActive(true);
             mainMenuActive = true;
         }
+        else
+        {
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Locked;
+            mainMenu.SetActive(false);
+            mainMenuActive = false;
+        }
 
-        mainMenu.SetActive(true);
-        mainMenuActive = true;
         settingsMenu.SetActive(false);
         credits.SetActive(false);
 
