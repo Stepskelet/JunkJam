@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StoveScene_S.unity
     guid: 6dbe83ac74ff6564d917546b5f2fbc50
+  - enabled: 1
+    path: Assets/Scenes/LaundryScene_S.unity
+    guid: 7b03e65898f560e4391443fe34a588c4
   m_configObjects:
     com.unity.addressableassets: {fileID: 11400000, guid: d989cdc80d35f4c46b5433aa0d5dd7b4, type: 2}
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
