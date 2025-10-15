@@ -12,7 +12,7 @@ public class PlayerMoveToTarget : MonoBehaviour
 
     public Transform cameraPosition; // Камера персонажа
     public FirstPersonMovement movementScript; // Скрипт движение
-
+    [SerializeField] private HintManager hint;
     public FirstPersonLook lookScript; // Скрипт камеры
 
     [Header("Interaction")]
@@ -55,6 +55,22 @@ public class PlayerMoveToTarget : MonoBehaviour
                     stoveIteraction.enabled = true;
                 }   
             }
+        }
+        Ray ray1 = playerCamera.ScreenPointToRay(screenCenter);
+        if (Physics.Raycast(ray1, out RaycastHit hit1, interactDistance))
+        {
+            if (hit1.collider.CompareTag(this.tag))
+            {
+                hint.ShowHint("E");
+            }
+            else
+            {
+                hint.HideHint();
+            }
+        }
+        else
+        {
+            hint.HideHint();
         }
 
         if (awaitingEscape && Input.GetKeyDown(KeyCode.Escape))
