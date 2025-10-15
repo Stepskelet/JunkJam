@@ -8091,22 +8091,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1495865446}
     m_Modifications:
-    - target: {fileID: 3549715393714263114, guid: e99bde795926f79479baed539886dd56, type: 3}
-      propertyPath: hint
-      value: 
-      objectReference: {fileID: 537845324}
-    - target: {fileID: 3549715393714263114, guid: e99bde795926f79479baed539886dd56, type: 3}
-      propertyPath: blinCounter
-      value: 
-      objectReference: {fileID: 537845325}
-    - target: {fileID: 3549715393714263114, guid: e99bde795926f79479baed539886dd56, type: 3}
-      propertyPath: blinCollider
-      value: 
-      objectReference: {fileID: 1040646827}
-    - target: {fileID: 3549715393714263114, guid: e99bde795926f79479baed539886dd56, type: 3}
-      propertyPath: playerCamera
-      value: 
-      objectReference: {fileID: 1110829884}
     - target: {fileID: 7473511421288590766, guid: e99bde795926f79479baed539886dd56, type: 3}
       propertyPath: m_LocalScale.x
       value: 141.2572
@@ -8166,10 +8150,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 8883572289568501344, guid: e99bde795926f79479baed539886dd56, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1040646827}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e99bde795926f79479baed539886dd56, type: 3}
 --- !u!1001 &160776019
 PrefabInstance:
@@ -10698,11 +10679,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 60fc772cab93cce41b2004213c79feef, type: 3}
---- !u!1 &300447405 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8883572289568501344, guid: e99bde795926f79479baed539886dd56, type: 3}
-  m_PrefabInstance: {fileID: 160317369}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &300686435 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 08dc39306adc36c45b51c720c6060ca7, type: 3}
@@ -18847,7 +18823,6 @@ GameObject:
   - component: {fileID: 432332764}
   - component: {fileID: 432332763}
   - component: {fileID: 432332765}
-  - component: {fileID: 432332766}
   m_Layer: 0
   m_Name: StoveFull
   m_TagString: StoveFull4
@@ -18916,7 +18891,6 @@ MonoBehaviour:
   person: {fileID: 1505044374}
   cameraPosition: {fileID: 1110829878}
   movementScript: {fileID: 1505044377}
-  hint: {fileID: 537845324}
   lookScript: {fileID: 1110829881}
   interactDistance: 1
 --- !u!82 &432332765
@@ -18928,7 +18902,7 @@ AudioSource:
   m_GameObject: {fileID: 432332761}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4943341527532090681, guid: e4931079b2dcf25449652b3ccf03edb8, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 2e4dedb2a3f3afc4398f4a6c5bd508e1, type: 3}
   m_PlayOnAwake: 0
@@ -19016,28 +18990,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!64 &432332766
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432332761}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4332230535898626839, guid: 9b0984c10573c1948bcafb31c6ffbdb0, type: 3}
 --- !u!1001 &433648846
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -24363,7 +24315,6 @@ GameObject:
   - component: {fileID: 463884544}
   - component: {fileID: 463884543}
   - component: {fileID: 463884545}
-  - component: {fileID: 463884546}
   m_Layer: 0
   m_Name: StoveFull
   m_TagString: StoveFull2
@@ -24432,7 +24383,6 @@ MonoBehaviour:
   person: {fileID: 1505044374}
   cameraPosition: {fileID: 1110829878}
   movementScript: {fileID: 1505044377}
-  hint: {fileID: 537845324}
   lookScript: {fileID: 1110829881}
   interactDistance: 1
 --- !u!82 &463884545
@@ -24444,7 +24394,7 @@ AudioSource:
   m_GameObject: {fileID: 463884541}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4943341527532090681, guid: e4931079b2dcf25449652b3ccf03edb8, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 2e4dedb2a3f3afc4398f4a6c5bd508e1, type: 3}
   m_PlayOnAwake: 0
@@ -24532,28 +24482,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!64 &463884546
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 463884541}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4332230535898626839, guid: 9b0984c10573c1948bcafb31c6ffbdb0, type: 3}
 --- !u!1001 &464267578
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -35215,14 +35143,6 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 556619294522721544, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 4943341527532090681, guid: e4931079b2dcf25449652b3ccf03edb8, type: 2}
-    - target: {fileID: 3262163692650602188, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 4943341527532090681, guid: e4931079b2dcf25449652b3ccf03edb8, type: 2}
     - target: {fileID: 3404824665309619301, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
       propertyPath: Loop
       value: 0
@@ -35235,10 +35155,6 @@ PrefabInstance:
       propertyPath: m_PlayOnAwake
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3404824665309619301, guid: 11aaea5348574644a9eb4f4504fcce3f, type: 3}
-      propertyPath: OutputAudioMixerGroup
-      value: 
-      objectReference: {fileID: 4943341527532090681, guid: e4931079b2dcf25449652b3ccf03edb8, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -49324,28 +49240,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7473511421288590766, guid: e99bde795926f79479baed539886dd56, type: 3}
   m_PrefabInstance: {fileID: 160317369}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &1040646827
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 300447405}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4141878788222339541, guid: 0d2c4747dc2b3724a92f1c9375c5ad26, type: 3}
 --- !u!1 &1041083810 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 496187f31f00b3a4c8466317086aa255, type: 3}
@@ -111437,7 +111331,6 @@ GameObject:
   - component: {fileID: 1904881571}
   - component: {fileID: 1904881570}
   - component: {fileID: 1904881572}
-  - component: {fileID: 1904881573}
   m_Layer: 0
   m_Name: StoveFull
   m_TagString: StoveFull3
@@ -111506,7 +111399,6 @@ MonoBehaviour:
   person: {fileID: 1505044374}
   cameraPosition: {fileID: 1110829878}
   movementScript: {fileID: 1505044377}
-  hint: {fileID: 537845324}
   lookScript: {fileID: 1110829881}
   interactDistance: 1
 --- !u!82 &1904881572
@@ -111518,7 +111410,7 @@ AudioSource:
   m_GameObject: {fileID: 1904881568}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4943341527532090681, guid: e4931079b2dcf25449652b3ccf03edb8, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 2e4dedb2a3f3afc4398f4a6c5bd508e1, type: 3}
   m_PlayOnAwake: 0
@@ -111606,28 +111498,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!64 &1904881573
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1904881568}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4332230535898626839, guid: 9b0984c10573c1948bcafb31c6ffbdb0, type: 3}
 --- !u!1001 &1905068244
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -111891,7 +111761,6 @@ GameObject:
   - component: {fileID: 1913525520}
   - component: {fileID: 1913525521}
   - component: {fileID: 1913525522}
-  - component: {fileID: 1913525523}
   m_Layer: 0
   m_Name: StoveFull
   m_TagString: StoveFull1
@@ -111942,7 +111811,6 @@ MonoBehaviour:
   person: {fileID: 1505044374}
   cameraPosition: {fileID: 1110829878}
   movementScript: {fileID: 1505044377}
-  hint: {fileID: 537845324}
   lookScript: {fileID: 1110829881}
   interactDistance: 1
 --- !u!114 &1913525521
@@ -111972,7 +111840,7 @@ AudioSource:
   m_GameObject: {fileID: 1913525518}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 4943341527532090681, guid: e4931079b2dcf25449652b3ccf03edb8, type: 2}
+  OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 8300000, guid: 2e4dedb2a3f3afc4398f4a6c5bd508e1, type: 3}
   m_PlayOnAwake: 0
@@ -112060,28 +111928,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!64 &1913525523
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1913525518}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 5
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 4332230535898626839, guid: 9b0984c10573c1948bcafb31c6ffbdb0, type: 3}
 --- !u!1001 &1915071050
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -112307,7 +112153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282b687e5b88cb44ea1d368d8eae4442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeoutRestart
-  waitTime: 20
+  waitTime: 10
   fadeImage: {fileID: 1504810446}
   fadeSpeed: 0.5
   pancake: {fileID: 1495865442}
