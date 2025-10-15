@@ -12,12 +12,6 @@ public class Game : MonoBehaviour
 
     public GameObject person; // Объект игрока
 
-    public float rangeLight;
-
-    public float intencityLight;
-
-    public string soundTag = "GameLampAudio";
-
     const int SIZE = 5;
     const int START = 0;
     const int END = 24;
@@ -33,34 +27,14 @@ public class Game : MonoBehaviour
     private Color blue = new Color(0.678f, 0.847f, 0.902f);
 
     private Color green = new Color(0f, 1f, 0f);
+    private Color initialColor;
 
     private Rigidbody rb;
 
-    private Vector3 initialPosition;
-
-    private AudioSource lampSwitchSound;
-
-    void Awake()
-    {
-        initialPosition = transform.position;
-    }
-
-    void Start()
-    {
-        foreach (GameObject b in buttons)
-        {
-            b.GetComponentInChildren<Light>().range = rangeLight;
-            b.GetComponentInChildren<Light>().intensity = intencityLight;
-        }
-        
-        GameObject sourceAudio = GameObject.FindGameObjectWithTag(soundTag);
-        lampSwitchSound = sourceAudio.GetComponent<AudioSource>();
-    }
-
     void OnEnable()
     {
-        returnBackPosition();
-        resetLights();
+        DisableChildrenMeshRenderers();
+        GetComponent<MeshRenderer>().enabled = false;
 
         rb = person.GetComponent<Rigidbody>();
 
@@ -72,26 +46,24 @@ public class Game : MonoBehaviour
 
         movementScript.enabled = false;
         lookScript.enabled = false;
-
-        buttons[0].GetComponentInChildren<Light>().enabled = true;
-        buttons[0].GetComponentInChildren<Light>().color = green;
-        buttons[buttons.Count - 1].GetComponentInChildren<Light>().enabled = true;
-        buttons[buttons.Count - 1].GetComponentInChildren<Light>().color = Color.red;
+        initialColor = buttons[0].GetComponent<Renderer>().material.color;
+        buttons[0].GetComponent<Renderer>().material.color = green;
+        buttons[buttons.Count - 1].GetComponent<Renderer>().material.color = Color.red;
         buttonNumber = 0;
 
         path = FindRandomPath();
         indexPath = 1;
+        buttons[path[indexPath]].GetComponent<Renderer>().material.color = blue;
 
-        buttons[path[indexPath]].GetComponentInChildren<Light>().enabled = true;
-        buttons[path[indexPath]].GetComponentInChildren<Light>().color = blue;
 
         MoveObjectInFrontOfCamera();
     }
 
     void OnDisable()
     {
-        returnBackPosition();
-        resetLights();
+        restoreColors();
+        DisableChildrenMeshRenderers();
+        GetComponent<MeshRenderer>().enabled = false;
 
         rb.isKinematic = false;
         rb.useGravity = true;
@@ -126,10 +98,7 @@ public class Game : MonoBehaviour
 
         if (newOne == path[indexPath])
         {
-            buttons[path[indexPath-1]].GetComponentInChildren<Light>().enabled = false;
-            buttons[path[indexPath]].GetComponentInChildren<Light>().enabled = true;
-            buttons[path[indexPath]].GetComponentInChildren<Light>().color = green;
-            lampSwitchSound.Play();
+            buttons[path[indexPath]].GetComponent<Renderer>().material.color = green;
 
             if (indexPath == path.Count - 1)
             {
@@ -141,14 +110,42 @@ public class Game : MonoBehaviour
 
             if (indexPath != path.Count - 1)
             {
-                buttons[path[indexPath]].GetComponentInChildren<Light>().enabled = true;
-                buttons[path[indexPath]].GetComponentInChildren<Light>().color = blue;
+                buttons[path[indexPath]].GetComponent<Renderer>().material.color = blue;
             }
 
             buttonNumber = newOne;
         }
     }
 
+    void restoreColors()
+    {
+        foreach (GameObject b in buttons)
+        {
+            b.GetComponent<Renderer>().material.color = initialColor;
+        }
+    }
+    
+    // Выключить MeshRenderer у всех дочерних объектов
+    void DisableChildrenMeshRenderers()
+    {
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer renderer in renderers)
+        {
+            renderer.enabled = false;
+        }
+    }
+
+    // Включить MeshRenderer у всех дочерних объектов
+    void EnableChildrenMeshRenderers()
+    {
+        MeshRenderer[] renderers = GetComponentsInChildren<MeshRenderer>();
+
+        foreach (MeshRenderer renderer in renderers)
+        {
+            renderer.enabled = true;
+        }
+    }
 
     List<int> GetNeighbors(int cell, HashSet<int> visited)
     {
@@ -182,7 +179,7 @@ public class Game : MonoBehaviour
 
         return neighbors;
     }
-
+    
     List<int> FindRandomPath()
     {
         var stack = new Stack<int>();
@@ -230,18 +227,10 @@ public class Game : MonoBehaviour
         transform.position = worldPosition;
         transform.rotation = Camera.main.transform.rotation;
         transform.rotation *= Quaternion.Euler(0, 180, 0);
+
+        GetComponent<MeshRenderer>().enabled = true;
+        EnableChildrenMeshRenderers();
     }
 
-    void returnBackPosition()
-    {
-        transform.position = initialPosition;
-    }
-
-    void resetLights()
-    {
-        foreach (GameObject b in buttons) {
-            b.GetComponentInChildren<Light>().enabled = false;
-        }
-    }
 
 }
