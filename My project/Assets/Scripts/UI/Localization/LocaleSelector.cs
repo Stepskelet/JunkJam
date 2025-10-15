@@ -5,9 +5,9 @@ using UnityEngine.Localization.Settings;
 public class LocaleSelector : MonoBehaviour
 {
     private bool localeChanging = false;
-    private static int localeID = 0;
+    public static int localeID = 0; // english
 
-    private void Start()
+    private void Awake()
     {
         StartCoroutine(SetLocale(localeID));
     }
