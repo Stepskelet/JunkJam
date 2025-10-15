@@ -40,6 +40,8 @@ public class Game : MonoBehaviour
 
     private AudioSource lampSwitchSound;
 
+    [SerializeField] private GameObject legacyPanel;
+
     void Awake()
     {
         initialPosition = transform.position;
@@ -47,6 +49,7 @@ public class Game : MonoBehaviour
 
     void Start()
     {
+        legacyPanel.SetActive(false);
         foreach (GameObject b in buttons)
         {
             b.GetComponentInChildren<Light>().range = rangeLight;
@@ -81,6 +84,8 @@ public class Game : MonoBehaviour
 
         path = FindRandomPath();
         indexPath = 1;
+
+        legacyPanel.SetActive(true);
 
         buttons[path[indexPath]].GetComponentInChildren<Light>().enabled = true;
         buttons[path[indexPath]].GetComponentInChildren<Light>().color = blue;

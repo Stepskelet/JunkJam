@@ -12,43 +12,64 @@ public class DialogueBoxScript : MonoBehaviour
     public static bool outOfDialogue = true;
     public static bool isPrinting = false;
     private int index = 0;
-    string[] dialogue;
+    List<string> dialogue;
+    List<float> timingX;
     string[] test = { "1231231231231231", "asdasdasdasd", "asdas][][]sadfs", "af43t45wwefsadf" };
+
+    [SerializeField] DialogueCollection dialogueCollection;
 
     private void Start()
     {
         textBox.text = string.Empty;
         dialogueBox.SetActive(false);
-    }
 
-    private void Update()
-    {
-        if (!outOfDialogue && Input.GetMouseButtonDown(0))
+        if(!MainMenu.mainMenuActive)
         {
-            if (isPrinting)
-            {
-                StopAllCoroutines();
-                textBox.text = dialogue[index];
-                isPrinting = false;
-            }
-            else NextLine(dialogue);
+            StartCoroutine(WaitForDelayedStart());
         }
-        //if (Input.GetKeyDown(KeyCode.N)) StartDialogue(test);
+        else { 
+
+        }
     }
 
-    public void StartDialogue(string[] lines)
+    IEnumerator WaitForGameStart()
     {
-        if(lines.Length == 0)
+        yield return new WaitForSeconds(1);
+        if(MainMenu.mainMenuActive)
         {
+            StartCoroutine(WaitForGameStart());
+        }
+        else
+        {
+            DelayedStart();
+        }
+    }
+
+    IEnumerator WaitForDelayedStart()
+    {
+        yield return new WaitForSeconds(1f);
+        DelayedStart();
+    }
+
+    private void DelayedStart()
+    {
+        StartDialogue(dialogueCollection.lines, dialogueCollection.timing);
+    }
+
+    public void StartDialogue(List<string> lines, List<float> timing)
+    {
+        if(lines.Count != 0)
+        {
+            timingX = timing;
             outOfDialogue = false;
             dialogue = lines;
             dialogueBox.SetActive(true);
             index = 0;
-            StartCoroutine(TypeLine(lines[index]));
+            StartCoroutine(TypeLine(lines[index], timingX[index]));
         }
     }
 
-    IEnumerator TypeLine(string line)
+    IEnumerator TypeLine(string line, float timing)
     {
         isPrinting = true;
         foreach (char c in line.ToCharArray())
@@ -57,15 +78,17 @@ public class DialogueBoxScript : MonoBehaviour
             yield return new WaitForSeconds(textSpeed);
         }
         isPrinting = false;
+        yield return new WaitForSeconds(timing);
+        NextLine(dialogue, timingX);
     }
 
-    void NextLine(string[] lines)
+    void NextLine(List<string> lines, List<float> timing)
     {
         index++;
-        if (index < lines.Length)
+        if (index < lines.Count)
         {
             textBox.text = string.Empty;
-            StartCoroutine(TypeLine(lines[index]));
+            StartCoroutine(TypeLine(lines[index], timingX[index]));
         }
         else
         {
@@ -73,4 +96,5 @@ public class DialogueBoxScript : MonoBehaviour
             outOfDialogue = true;
         }
     }
+
 }
