@@ -38,11 +38,14 @@ public class DialogueBoxScript : MonoBehaviour
 
     public void StartDialogue(string[] lines)
     {
-        outOfDialogue = false;
-        dialogue = lines;
-        dialogueBox.SetActive (true);
-        index = 0;
-        StartCoroutine(TypeLine(lines[index]));
+        if(lines.Length == 0)
+        {
+            outOfDialogue = false;
+            dialogue = lines;
+            dialogueBox.SetActive(true);
+            index = 0;
+            StartCoroutine(TypeLine(lines[index]));
+        }
     }
 
     IEnumerator TypeLine(string line)
