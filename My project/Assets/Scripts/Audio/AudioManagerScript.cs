@@ -14,8 +14,11 @@ public class AudioManagerScript : MonoBehaviour
 
     void Start()
     {
-        music.clip = OST;
-        music.Play();
+        if (MainMenu.mainMenuActive)
+        {
+            music.clip = OST;
+            music.Play();
+        }
     }
 
     // Update is called once per frame

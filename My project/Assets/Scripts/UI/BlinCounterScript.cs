@@ -1,5 +1,6 @@
 using UnityEngine;
 using TMPro;
+using UnityEngine.SceneManagement;
 
 public class BlinCounterScript : MonoBehaviour
 {
@@ -12,6 +13,11 @@ public class BlinCounterScript : MonoBehaviour
     {
         counterObject.SetActive(true);
         counterText.text = blinCount.ToString();
+        if (SceneManager.GetActiveScene().buildIndex == 0)
+        {
+            counterText.text = "0";
+            blinCount = 0;
+        }
     }
 
     private void FixedUpdate()
