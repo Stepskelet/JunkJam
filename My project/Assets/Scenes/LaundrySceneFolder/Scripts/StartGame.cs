@@ -11,6 +11,16 @@ public class StartGame : MonoBehaviour
 
     public float interactDistance = 1f;    // Дистанция взаимодействия
 
+    public string soundTag = "WashingAudio";
+
+    private GameObject sourceAudio;
+
+    private AudioSource toPlay;
+
+    private float soundStart = 6f;
+
+    private float soundEnd = 30f;
+
     private bool isPlaying;
 
     private Vector3 initialPosition;
@@ -21,6 +31,12 @@ public class StartGame : MonoBehaviour
         initialPosition = transform.localPosition;
         initialRotation = transform.localRotation;
         miniGame.enabled = false;
+
+        sourceAudio = GameObject.FindWithTag(soundTag);
+        sourceAudio.transform.position = transform.position;
+        toPlay = sourceAudio.GetComponent<AudioSource>();
+        toPlay.time = soundStart;
+        toPlay.Play();
     }
 
     void OnDisable()
@@ -28,6 +44,7 @@ public class StartGame : MonoBehaviour
         isPlaying = false;
         transform.localPosition = initialPosition;
         transform.localRotation = initialRotation;
+        toPlay.Stop();
     }
 
     void Update()
@@ -35,6 +52,14 @@ public class StartGame : MonoBehaviour
         if (!miniGame.enabled && isPlaying)
         {
             enabled = false;
+        }
+
+        if (toPlay.isPlaying)
+        {
+            if (toPlay.time >= soundEnd)
+            {
+                toPlay.time = soundStart;
+            }
         }
 
         float shakeX = Mathf.Sin(Time.time * shakeFrequency) * shakeAmount;

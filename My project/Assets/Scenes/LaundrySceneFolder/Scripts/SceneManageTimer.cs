@@ -5,6 +5,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System;
 using System.Linq;
+using NUnit.Framework;
 
 
 public class SceneManageTimer : MonoBehaviour
@@ -25,10 +26,45 @@ public class SceneManageTimer : MonoBehaviour
     [Header("Тег стиралок")]
     public String washerTag = "GameButton0";
 
+
+    [Header("Канвас")]
+
+    public Image waterImage;
+
+    [Header("Частицы воды")]
+
+    public GameObject particles;
+
+    [Header("Объект затопления")]
+
+    public GameObject flood;
+
+    [Header("Аудио")]
+    public string soundTag = "WaterAudio";
+
+    public string winTag = "WinSound";
+
+    public string underTag = "UnderSound";
+
+    private float elapsedTime = 0f;
+    private bool isMoving = false;
+
+    private bool isMovingDown = false;
+
+    private float startPosition;
+    private float endPosition;
+
     private bool isFading = false;
     private float fadeAlpha = 0f;
 
     private int washerosOff = 0;
+
+    private AudioSource waterAudio;
+
+    private AudioSource winAudio;
+
+    private AudioSource underAudio;
+
 
     GameObject[] washers;
 
@@ -51,31 +87,79 @@ public class SceneManageTimer : MonoBehaviour
             availableNumbers.Add(i);
         }
 
+        GameObject sourceAudio = GameObject.FindGameObjectWithTag(soundTag);
+        waterAudio = sourceAudio.GetComponent<AudioSource>();
+        sourceAudio = GameObject.FindGameObjectWithTag(winTag);
+        winAudio = sourceAudio.GetComponent<AudioSource>();
+        sourceAudio = GameObject.FindGameObjectWithTag(underTag);
+        underAudio = sourceAudio.GetComponent<AudioSource>();
+        waterAudio.Play();
+
         currentWasher = washers[(int)GetUniqueRandomInt()];
-        currentWasher.GetComponent<StartGame>().enabled = true;        
+        currentWasher.GetComponent<StartGame>().enabled = true;
 
         pancake.SetActive(false);
+
+        elapsedTime = 0f;
+        startPosition = flood.transform.position.y;
+        endPosition = Camera.main.transform.position.y - 5.05f;
+        isMoving = true;
+
         StartCoroutine(WaitAndFade());
     }
 
     void Update()
     {
-        if (!currentWasher.GetComponent<StartGame>().enabled)
+        if (isMoving || isMovingDown)
         {
-            incCounter();
+            elapsedTime += Time.deltaTime;
+            float t = Mathf.Clamp01(elapsedTime / waitTime);
+            float newValue = Mathf.Lerp(startPosition, endPosition, t);
+            Vector3 pos = flood.transform.position;
+            pos.y = newValue;
+            flood.transform.position = pos;
 
-            if (washerosOff != 5)
+            if (t >= 1f)
             {
-                currentWasher = washers[(int)GetUniqueRandomInt()];
-                currentWasher.GetComponent<StartGame>().enabled = true;
-            }  
+                if (isMoving)
+                {
+                    isMoving = false;
+                    waterImage.enabled = true;
+                    particles.SetActive(true);
+                    waterAudio.Stop();
+                    underAudio.Play();
+                }
 
+                else
+                {
+                    flood.SetActive(false);
+                    waterAudio.Stop();
+                    this.enabled = false;
+                    return;
+                }
+            }
+        }
+
+        if (!isMovingDown)
+        {
+            if (!currentWasher.GetComponent<StartGame>().enabled)
+            {
+                incCounter();
+
+                if (washerosOff != 5)
+                {
+                    currentWasher = washers[(int)GetUniqueRandomInt()];
+                    currentWasher.GetComponent<StartGame>().enabled = true;
+                }
+
+            }
         }
     }
 
     IEnumerator WaitAndFade()
     {
-        yield return new WaitForSeconds(waitTime);
+        float fadeWait = waitTime;
+        yield return new WaitForSeconds(fadeWait);
 
         if (washerosOff != 5)
         {
@@ -95,10 +179,17 @@ public class SceneManageTimer : MonoBehaviour
     {
         washerosOff++;
 
-        if (washerosOff == 5 && !isFading)
+        if (washerosOff == 5 && !isFading && isMoving)
         {
             pancake.SetActive(true);
-            this.enabled = false;
+            winAudio.Play();
+            isMoving = false;
+            isMovingDown = true;
+
+            elapsedTime = 0f;
+            waitTime = 3f;
+            endPosition = startPosition;
+            startPosition = flood.transform.position.y;
         }
     }
 
