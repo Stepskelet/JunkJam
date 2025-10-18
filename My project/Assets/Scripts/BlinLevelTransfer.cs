@@ -9,7 +9,7 @@ public class BlinLevelTransfer : MonoBehaviour
     [SerializeField] private HintManager hint;
     [SerializeField] private BlinCounterScript blinCounter;
 
-    private float interactDistance = 1f;
+    private float interactDistance = 3f;
     private void Start()
     {
         sceneIndex = SceneManager.GetActiveScene().buildIndex;
@@ -21,7 +21,7 @@ public class BlinLevelTransfer : MonoBehaviour
         Ray ray = playerCamera.ScreenPointToRay(screenCenter);
         if (Physics.Raycast(ray, out RaycastHit hit, interactDistance))
         {
-            if (hit.collider.CompareTag(this.tag))
+            if (hit.collider == blinCollider)
             {
                 hint.ShowHint("E");
                 if (Input.GetKeyDown(KeyCode.E))

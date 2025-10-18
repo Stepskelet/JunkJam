@@ -112323,7 +112323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 282b687e5b88cb44ea1d368d8eae4442, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TimeoutRestart
-  waitTime: 20
+  waitTime: 60
   fadeImage: {fileID: 1504810446}
   fadeSpeed: 0.5
   pancake: {fileID: 1495865442}
