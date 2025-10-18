@@ -38,21 +38,21 @@ public class DialogueCollection : MonoBehaviour
                 break;
 
             case (1, 0): // kitchen
-                lines = new List<string> { "This was actually pretty good!", "*coughing*", "I need to turn *coughing* off damn stoves", "*coughing*", "It brings me back to the time, when I burned down the place, I used to work in." };
+                lines = new List<string> { "This was actually pretty good!", "*coughing*", "I need to turn *coughing* off damn stoves (Use 'E' key)", "*coughing*", "It brings me back to the time, when I burned down the place, I used to work in." };
                 timing = new List<float> { 2, 2, 4, 2, 6 };
                 break;
             case (1, 1):
-                lines = new List<string> { "Неплохой был блинчик.", "*кашель*","Надо вы-*кашель*-ключить плиты" , "*кашель*", "Навевает воспоминания о том, как я устрои пождог общепита, в котором работал."};
+                lines = new List<string> { "Неплохой был блинчик.", "*кашель*","Надо вы-*кашель*-ключить плиты (Используйте клавишу 'Е')" , "*кашель*", "Навевает воспоминания о том, как я устрои пождог общепита, в котором работал."};
                 timing = new List<float> { 2, 2, 4, 2, 5 };
                 break;
 
             case (2, 0): // laundry
-                lines = new List<string> { "It doesn't get any better.", "Litterally... I guess..." };
-                timing = new List<float> { 3, 3};
+                lines = new List<string> { "It doesn't get any better.", "Litterally... I guess...", "(Use 'E' key to interact with washers)"};
+                timing = new List<float> { 3, 3, 3};
                 break;
             case (2, 1):
-                lines = new List<string> { "Лучше и быть не могло.", "Видимо, буквально..." };
-                timing = new List<float> { 3, 3 };
+                lines = new List<string> { "Лучше и быть не могло.", "Видимо, буквально...", "Используйте клавишу 'Е' для взаимодействия со стиральными машинами"};
+                timing = new List<float> { 3, 3, 3};
                 break;
 
             case (3, 0): // end scenes

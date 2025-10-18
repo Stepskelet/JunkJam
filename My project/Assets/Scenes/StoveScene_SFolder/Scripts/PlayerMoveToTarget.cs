@@ -16,7 +16,7 @@ public class PlayerMoveToTarget : MonoBehaviour
     public FirstPersonLook lookScript; // Скрипт камеры
 
     [Header("Interaction")]
-    public float interactDistance = 1f;    // Дистанция взаимодействия
+    public float interactDistance = 2f;    // Дистанция взаимодействия
 
     private StoveIteraction stoveIteraction;
 

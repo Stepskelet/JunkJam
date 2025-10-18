@@ -40,7 +40,7 @@ public class Game : MonoBehaviour
 
     private AudioSource lampSwitchSound;
 
-    [SerializeField] private GameObject legacyPanel;
+    public GameObject legacyPanel;
 
     void Awake()
     {
@@ -49,7 +49,7 @@ public class Game : MonoBehaviour
 
     void Start()
     {
-        legacyPanel.SetActive(false);
+        legacyPanel.SetActive(true);
         foreach (GameObject b in buttons)
         {
             b.GetComponentInChildren<Light>().range = rangeLight;
@@ -97,6 +97,7 @@ public class Game : MonoBehaviour
     {
         returnBackPosition();
         resetLights();
+        legacyPanel.SetActive(false);
 
         rb.isKinematic = false;
         rb.useGravity = true;
